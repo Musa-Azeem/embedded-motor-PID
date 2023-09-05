@@ -1,0 +1,4 @@
+155c155
+<             self._oFile.write(f"#{t:d}\n")
+---
+>             self._oFile.write(f"#{t:f}\n")
