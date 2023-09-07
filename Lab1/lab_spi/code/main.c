@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
 
 	log("These are the timestamps\n")
 	for (unsigned int i = 0; i < w->nsamples; i++) {
-		log("%d", w->timestamps[i])
+		log("%f", w->timestamps[i])
 	}
 
 	free_waves(w);
