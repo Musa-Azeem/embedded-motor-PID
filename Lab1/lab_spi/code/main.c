@@ -7,11 +7,19 @@
 
 #include <stdio.h>
 #include "waves.h"
+#define MOSI "mosi"
+#define MISO "miso"
+#define SCLK "sclk"
+#define SS "ss"
+
 
 int main(int argc, char** argv) {
 	/* This macro silences compiler errors about unused variables. */
 	UNUSED(argc);
 	UNUSED(argv);
+
+	int cpol = 0;
+	int cpha = 0;
 
 	/* Read the input for the test case into a new waves object. */
 	waves* w = parse_file(stdin);
@@ -31,8 +39,20 @@ int main(int argc, char** argv) {
 	}
 
 	log("These are the timestamps\n")
-	for (unsigned int i = 0; i < w->nsamples; i++) {
-		log("%f", w->timestamps[i])
+	// for (unsigned int i = 0; i < w->nsamples; i+=8) {
+	// 	mosi = 
+		
+	// }
+	int next_ss_edge = next_edge(w, SS, 0, false, true)
+	// while there is next transmission
+	while (next_ss_edge != INFINITY) { 
+		// Read Exchange
+		
+		// First Transmission - read 8 bytes
+
+		// Loop - read 8 byte intervals until ss is high
+
+		// check for next ss falling edge
 	}
 
 	free_waves(w);
