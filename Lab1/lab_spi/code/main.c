@@ -15,7 +15,6 @@ int main(int argc, char** argv) {
 
 	/* Read the input for the test case into a new waves object. */
 	waves* w = parse_file(stdin);
-
 	/* We can use the 'log' function like printf() to record information to
 	 * standard error, this way it will not interfere with the data sent to
 	 * standard out we wish for grade.sh to interpret as our solution to
@@ -26,8 +25,14 @@ int main(int argc, char** argv) {
 		// index2signal() lets us get the human-readable name of
 		// the signal from its index.
 		//
+		// log(signal_at_idx(w, signal2index("mosi"), 0))
 		// w->widths[i] tells us the number of bits in signal i.
 		log("\t* %s (%i bits)\n", index2signal(w, i), w->widths[i]);
+	}
+
+	log("These are the timestamps\n")
+	for (unsigned int i = 0; i < w->nsamples; i++) {
+		log("%d", w->timestamps[i])
 	}
 
 	free_waves(w);
