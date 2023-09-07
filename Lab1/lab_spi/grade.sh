@@ -46,8 +46,7 @@ if [ ! -f ./.setup_done ] ; then
 	rm -rf ./.venv
 	$VIRTUALENV --python "$PYTHON" ./.venv 
 	. ./.venv/bin/activate
-	./.venv/bin/pip3 install pyDigitalWaveTools
-	#patch -i patch.diff .venv/lib/python3.8/site-packages/pyDigitalWaveTools/vcd/writer.py
+	./.venv/bin/pip3 install pyDigitalWaveTools==1.0
 	echo "First time setup done!"
 	touch .setup_done
 fi
@@ -56,6 +55,5 @@ fi
 
 PYTHON="$(pwd)/.venv/bin/python3"
 
-patch -sNi patch.diff .venv/lib/python3.8/site-packages/pyDigitalWaveTools/vcd/writer.py
 
 "$PYTHON" -m grader "$@"
