@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
 		int value = 0;
 
 		bool read_bytes_on_posedge = check_if_posedge(cpol, cpha);
-		log("read_bytes_on_posedge: %f\n", read_bytes_on_posedge);
+		log("read_bytes_on_posedge: %d\n", read_bytes_on_posedge);
 		
 		// First Transmission - read 8 bytes
 		int mosi_byte = 0;
