@@ -14,11 +14,17 @@
 #define CPOL "cpol"
 #define CPHA "cpha"
 
-bool check_if_posedge(int cpol, int cpha);
 struct DataTuple {
 	int byte;
 	float last_read_time;
 };
+struct DataTuple read_exchange(
+	waves* w, 
+	char* signal, 
+	float last_read_time, 
+	bool read_bytes_on_posedge
+);
+bool check_if_posedge(int cpol, int cpha);
 
 int main(int argc, char** argv) {
 	/* This macro silences compiler errors about unused variables. */
@@ -43,8 +49,6 @@ int main(int argc, char** argv) {
 	}
 
 	// ========================= READ SIGNAL ==================================
-	// Constants
-	int LEN_EXCH = 8;
 
 	// Hold values of cpol and cpha
 	int cpol = 0;
