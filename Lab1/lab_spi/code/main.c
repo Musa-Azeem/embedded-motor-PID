@@ -80,7 +80,6 @@ int main(int argc, char** argv) {
 
 		// Now, read next 8 bytes or read multiple 8 byte chucks for stream
 		if (is_stream) {
-			log("STREAMMMM")
 			// next 8 bytes is length of stream - MOSI
 			// then read string of bytes from MOSI (write) or MISO (read)
 
@@ -108,6 +107,7 @@ int main(int argc, char** argv) {
 			}
 
 			int values[n];
+			printf(n);
 			for (int j = 0; j < n; j++) {
 				for (int i = 0; i < 8; i++) {
 					// find next edge (pos or neg based on CPHA/CPOL) after the last edge
@@ -123,6 +123,7 @@ int main(int argc, char** argv) {
 
 			printf("%s STREAM %02x", read_or_write, addr);
 			for (int i = 0; i < n; i++) {
+				printf(i);
 				printf(" %02x", values[i]);
 			}
 			printf("\n");
