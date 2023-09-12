@@ -78,9 +78,9 @@ int main(int argc, char** argv) {
 		}
 
 		// Interpret MOSI signal
-		addr = mosi_byte >> 6;				// bits 7:2 are address to read/write
-		int is_write = (mosi_byte >> 7) << 1; 	// bit 1 is read (0) or write (1)
-		int is_stream = mosi_byte & 254;		// bit 0 is stream (1) or not (0)
+		addr = mosi_byte >> 2;					// bits 7:2 are address to read/write
+		int is_write = (mosi_byte >> 1) & 1; 	// bit 1 is read (0) or write (1)
+		int is_stream = mosi_byte & 1;			// bit 0 is stream (1) or not (0)
 		log("addr: %02x, is_write: %d, is_stream: %d\n\n", addr, is_write, is_stream);
 
 		// Now, read next 8 bytes or read multiple 8 byte chucks for stream
