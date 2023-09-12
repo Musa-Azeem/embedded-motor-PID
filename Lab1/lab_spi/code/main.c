@@ -11,6 +11,8 @@
 #define MISO "miso"
 #define SCLK "sclk"
 #define SS "ss"
+#define CPOL "cpol"
+#define CPHA "cpha"
 
 bool check_if_posedge(int cpol, int cpha);
 
@@ -18,9 +20,6 @@ int main(int argc, char** argv) {
 	/* This macro silences compiler errors about unused variables. */
 	UNUSED(argc);
 	UNUSED(argv);
-
-	int cpol = 0;
-	int cpha = 0;
 
 	/* Read the input for the test case into a new waves object. */
 	waves* w = parse_file(stdin);
@@ -39,11 +38,19 @@ int main(int argc, char** argv) {
 		log("\t* %s (%i bits)\n", index2signal(w, i), w->widths[i]);
 	}
 
+	// ************************** READ SIGNAL *********************************
+	int cpol = 0;
+	int cpha = 0;
+
 	// get time of next edge in ss signal
 	float next_ss_edge_time = next_edge(w, SS, 0, false, true);
 
 	// while there is next transmission
 	while (next_ss_edge_time != INFINITY) {
+		// first, get cpol and cpha
+		cpol = signal_at(w, CPOL, next_ss_edge_time);
+		cpha = signal_at(w, CPHA, next_ss_edge_time);
+
 		// Read Exchange
 
 		bool read_bytes_on_posedge = check_if_posedge(cpol, cpha);
@@ -68,7 +75,6 @@ int main(int argc, char** argv) {
 		int addr = mosi_byte >> 2;					// bits 7:2 are address to read/write
 		int is_write = (mosi_byte >> 1) & 1; 		// bit 1 is read (0) or write (1)
 		int is_stream = mosi_byte & 1;				// bit 0 is stream (1) or not (0)
-		log("addr: %02x, is_write: %d, is_stream: %d\n\n", addr, is_write, is_stream);
 
 		// Now, read next 8 bytes or read multiple 8 byte chucks for stream
 		if (is_stream) {
@@ -109,8 +115,10 @@ int main(int argc, char** argv) {
 			}
 
 			printf("%s STREAM %02x", read_or_write, addr);
-			for (int i = 0; i < n; i++) {
-				printf(" %02x", values[i]);
+			if (n <= 32) {	// tmp
+				for (int i = 0; i < n; i++) {
+					printf(" %02x", values[i]);
+				}
 			}
 			printf("\n");
 
