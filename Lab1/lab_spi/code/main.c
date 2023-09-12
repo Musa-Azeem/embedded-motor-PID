@@ -39,13 +39,9 @@ int main(int argc, char** argv) {
 		log("\t* %s (%i bits)\n", index2signal(w, i), w->widths[i]);
 	}
 
-	log("These are the timestamps\n")
-	// for (unsigned int i = 0; i < w->nsamples; i+=8) {
-	// 	mosi = 
-		
-	// }
 	// get time of next edge in ss signal
 	float next_ss_edge_time = next_edge(w, SS, 0, false, true);
+	log("\n\n\nNext SS Edge time: %f\n", next_ss_edge_time);
 	// while there is next transmission
 	while (next_ss_edge_time != INFINITY) {
 		// Read Exchange
@@ -56,6 +52,7 @@ int main(int argc, char** argv) {
 		int value = 0;
 
 		bool read_bytes_on_posedge = check_if_posedge(cpol, cpha);
+		log("read_bytes_on_posedge: %f\n", read_bytes_on_posedge);
 		
 		// First Transmission - read 8 bytes
 		int mosi_byte = 0;
@@ -66,13 +63,16 @@ int main(int argc, char** argv) {
 		float next_read_time = 0;	// temporarily
 
 		// Read first 8 bits (1st exchange) of each signal by getting next edge 8 times
+		log("\n\nREADING 1st 8\n");
 		for (int i = 0; i < 8; i++) {
 			// find next edge (pos or neg based on CPHA/CPOL) after the found ss_edge
 			next_read_time = next_edge(w, SCLK, next_ss_edge_time, read_bytes_on_posedge, !read_bytes_on_posedge);
+			log("next_read_time: %f\n", next_read_time);
 			
 			// shift each byte to the left and read next bit
 			miso_byte = (miso_byte << 1) | signal_at(w, MISO, next_read_time);
 			mosi_byte = (miso_byte << 1) | signal_at(w, MOSI, next_read_time);
+			log("miso_byte: %d, mosi_byte: %d\n\n", miso_byte, mosi_byte);
 			// ss_bits = (miso_byte << 1) | signal_at(w, SS, next_read_time);
 		}
 
@@ -80,6 +80,7 @@ int main(int argc, char** argv) {
 		addr = mosi_byte >> 6;				// bits 7:2 are address to read/write
 		int is_write = (mosi_byte >> 7) << 1; 	// bit 1 is read (0) or write (1)
 		int is_stream = mosi_byte & 254;		// bit 0 is stream (1) or not (0)
+		log("addr: %02x, is_write: %d, is_stream: %d\n\n", addr, is_write, is_stream);
 
 		// Now, read next 8 bytes or read multiple 8 byte chucks for stream
 		if (is_stream) {
@@ -96,13 +97,17 @@ int main(int argc, char** argv) {
 				value_signal = MOSI;
 			}
 
+			log("\n\nvalue_signal: %s\n", value_signal);
+
 			// Read 8 bytes from MOSI or MISO
 			for (int i = 0; i < 8; i++) {
 				// find next edge (pos or neg based on CPHA/CPOL) after the last read time
 				next_read_time = next_edge(w, SCLK, next_read_time, read_bytes_on_posedge, !read_bytes_on_posedge);
+				log("NEXT next_read_time: %f\n", next_read_time);
 				
 				// shift byte to the left and read next bit
 				value = (value << 1) | signal_at(w, value_signal, next_read_time);
+				log("NEXT value: %d\n", value);
 			}
 		}
 		
