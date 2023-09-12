@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
 		int mosi_byte = 0;
 		int miso_byte = 0;
 		// int sclk_bits = 0;
-		int ss_bits = 0;
+		// int ss_bits = 0;
 
 		float next_read_time = 0;	// temporarily
 
