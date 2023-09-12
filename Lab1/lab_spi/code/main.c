@@ -123,8 +123,8 @@ int main(int argc, char** argv) {
 
 			printf("%s STREAM %02x", read_or_write, addr);
 			for (int i = 0; i < n; i++) {
-				printf("%d", i);
-				printf(" %02x", values[i]);
+				// printf("%d", i);
+				// printf(" %02x", values[i]);
 			}
 			printf("\n");
 
