@@ -111,7 +111,7 @@ int main(int argc, char** argv) {
 
 
 		// check for next ss falling edge after last read time
-		next_ss_edge_time = next_ss_edge_time = next_edge(w, SS, next_read_time, false, true);
+		next_ss_edge_time = next_edge(w, SS, next_read_time, false, true);
 	}
 
 	free_waves(w);
