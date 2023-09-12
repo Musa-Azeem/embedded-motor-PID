@@ -60,13 +60,13 @@ int main(int argc, char** argv) {
 		// int sclk_bits = 0;
 		// int ss_bits = 0;
 
-		float next_read_time = 0;	// temporarily
+		float next_read_time = next_ss_edge_time;	// start at beginning of transaction
 
 		// Read first 8 bits (1st exchange) of each signal by getting next edge 8 times
 		log("\n\nREADING 1st 8\n");
 		for (int i = 0; i < 8; i++) {
 			// find next edge (pos or neg based on CPHA/CPOL) after the found ss_edge
-			next_read_time = next_edge(w, SCLK, next_ss_edge_time, read_bytes_on_posedge, !read_bytes_on_posedge);
+			next_read_time = next_edge(w, SCLK, next_read_time, read_bytes_on_posedge, !read_bytes_on_posedge);
 			log("next_read_time: %f\n", next_read_time);
 			
 			// shift each byte to the left and read next bit
