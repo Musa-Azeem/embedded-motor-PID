@@ -73,7 +73,7 @@ int main(int argc, char** argv) {
 			// shift each byte to the left and read next bit
 			miso_byte = (miso_byte << 1) | signal_at(w, MISO, next_read_time);
 			mosi_byte = (miso_byte << 1) | signal_at(w, MOSI, next_read_time);
-			ss_bits = (miso_byte << 1) | signal_at(w, SS, next_read_time);
+			// ss_bits = (miso_byte << 1) | signal_at(w, SS, next_read_time);
 		}
 
 		// Interpret MOSI signal
