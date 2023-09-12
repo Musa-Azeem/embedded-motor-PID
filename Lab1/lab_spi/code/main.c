@@ -284,7 +284,7 @@ struct DataTuple read_exchange(
 	float next_read_time = last_read_time;
 
 	// Data of exchange - read from given "signal"
-	int value;
+	int value = 0;
 
 	for (int i = 0; i < LEN_EXCH; i++) {
 		// Find next clock edge (pos or neg based on "read_bytes_on_posedge")
