@@ -70,8 +70,9 @@ int main(int argc, char** argv) {
 			log("next_read_time: %f\n", next_read_time);
 			
 			// shift each byte to the left and read next bit
+			log("signal at MISO: %d, signal at MOSI: %d\n\n", signal_at(w, MISO, next_read_time), signal_at(w, MOSI, next_read_time));
 			miso_byte = (miso_byte << 1) | signal_at(w, MISO, next_read_time);
-			mosi_byte = (miso_byte << 1) | signal_at(w, MOSI, next_read_time);
+			mosi_byte = (mosi_byte << 1) | signal_at(w, MOSI, next_read_time);
 			log("miso_byte: %d, mosi_byte: %d\n\n", miso_byte, mosi_byte);
 			// ss_bits = (miso_byte << 1) | signal_at(w, SS, next_read_time);
 		}
