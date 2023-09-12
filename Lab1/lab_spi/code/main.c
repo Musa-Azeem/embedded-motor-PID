@@ -107,7 +107,7 @@ int main(int argc, char** argv) {
 		}
 		
 		// Print this transaction
-		printf("%s %02x %02x", read_or_write, addr, value);
+		printf("%s %02x %02x\n", read_or_write, addr, value);
 
 
 		// check for next ss falling edge after last read time
