@@ -109,6 +109,7 @@ int main(int argc, char** argv) {
 
 			int values[n];
 			for (int j = 0; j < n; j++) {
+				values[j] = 0;
 				for (int i = 0; i < 8; i++) {
 					// find next edge (pos or neg based on CPHA/CPOL) after the last edge
 					next_read_time = next_edge(w, SCLK, next_read_time, read_bytes_on_posedge, !read_bytes_on_posedge);
