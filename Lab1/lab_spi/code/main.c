@@ -107,7 +107,7 @@ int main(int argc, char** argv) {
 			}
 
 			int values[n];
-			printf(n);
+			printf("%d", n);
 			for (int j = 0; j < n; j++) {
 				for (int i = 0; i < 8; i++) {
 					// find next edge (pos or neg based on CPHA/CPOL) after the last edge
@@ -123,7 +123,7 @@ int main(int argc, char** argv) {
 
 			printf("%s STREAM %02x", read_or_write, addr);
 			for (int i = 0; i < n; i++) {
-				printf(i);
+				printf("%d", i);
 				printf(" %02x", values[i]);
 			}
 			printf("\n");
