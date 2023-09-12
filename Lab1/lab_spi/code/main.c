@@ -84,19 +84,6 @@ int main(int argc, char** argv) {
 		);
 		int mosi_byte = data.byte;
 		float last_read_time = data.last_read_time;
-		// for (int i = 0; i < LEN_EXCH; i++) {
-		// 	// Find next clock edge (pos or neg based on CPHA/CPOL)
-		// 	next_read_time = next_edge(
-		// 		w, 
-		// 		SCLK, 
-		// 		next_read_time, 
-		// 		read_bytes_on_posedge, 
-		// 		!read_bytes_on_posedge
-		// 	);
-
-		// 	// Shift byte to the left and read next bit
-		// 	mosi_byte = (mosi_byte << 1) | signal_at(w, MOSI, next_read_time);
-		// }
 
 		// Split MOSI signal
 		int addr = mosi_byte >> 2;			 // bits 7:2 is address to read/write
@@ -122,24 +109,6 @@ int main(int argc, char** argv) {
 			// (for reads) or MOSI (for writes)
 
 			// Read next exchange to get N from MOSI
-			// mosi_byte = 0;
-			// for (int i = 0; i < LEN_EXCH; i++) {
-			// 	// Find next clock edge (pos or neg based on CPHA/CPOL)
-			// 	next_read_time = next_edge(
-			// 		w, 
-			// 		SCLK, 
-			// 		next_read_time, 
-			// 		read_bytes_on_posedge, 
-			// 		!read_bytes_on_posedge
-			// 	);
-				
-			// 	// Shift byte to the left and read next bit
-			// 	mosi_byte = (mosi_byte << 1) | signal_at(
-			// 		w, 
-			// 		MOSI, 
-			// 		next_read_time
-			// 	);
-			// }
 			data = read_exchange(
 				w,
 				MOSI,
@@ -151,9 +120,6 @@ int main(int argc, char** argv) {
 			int n = data.byte;
 			last_read_time = data.last_read_time;
 
-			// Hold N
-			// int n = mosi_byte;
-
 			// Hold value of each exchange. There will be N values
 			int values[n];
 
@@ -162,23 +128,6 @@ int main(int argc, char** argv) {
 				// values[j] = 0;
 
 				// Read an exchange from MISO or MOSI
-				// for (int i = 0; i < LEN_EXCH; i++) {
-				// 	// Find next clock edge (pos or neg based on CPHA/CPOL)
-				// 	next_read_time = next_edge(
-				// 		w, 
-				// 		SCLK, 
-				// 		next_read_time, 
-				// 		read_bytes_on_posedge, 
-				// 		!read_bytes_on_posedge
-				// 	);
-					
-				// 	// Shift byte to the left and read next bit
-				// 	values[j] = (values[j] << 1) | signal_at(
-				// 		w, 
-				// 		value_signal, 
-				// 		next_read_time
-				// 	);
-				// }
 				data = read_exchange(
 					w,
 					value_signal,
@@ -205,24 +154,6 @@ int main(int argc, char** argv) {
 			// Only read the next exchange (8 bits) to get value of transaction 
 
 			// Read eight bytes from MOSI or MISO
-			// int value = 0;
-			// for (int i = 0; i < LEN_EXCH; i++) {
-			// 	// Find next clock edge (pos or neg based on CPHA/CPOL)
-			// 	next_read_time = next_edge(
-			// 		w, 
-			// 		SCLK, 
-			// 		next_read_time, 
-			// 		read_bytes_on_posedge, 
-			// 		!read_bytes_on_posedge
-			// 	);
-				
-			// 	// Shift byte to the left and read next bit
-			// 	value = (value << 1) | signal_at(
-			// 		w, 
-			// 		value_signal, 
-			// 		next_read_time
-			// 	);
-			// }
 			data = read_exchange(
 				w,
 				value_signal,
@@ -244,6 +175,8 @@ int main(int argc, char** argv) {
 	free_waves(w);
 	return 0;
 }
+
+
 
 bool check_if_posedge(int cpol, int cpha) {
 	/*
