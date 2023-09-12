@@ -80,6 +80,7 @@ int main(int argc, char** argv) {
 
 		// Now, read next 8 bytes or read multiple 8 byte chucks for stream
 		if (is_stream) {
+			log("STREAMMMM")
 			// next 8 bytes is length of stream - MOSI
 			// then read string of bytes from MOSI (write) or MISO (read)
 
