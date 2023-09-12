@@ -15,7 +15,10 @@
 #define CPHA "cpha"
 
 bool check_if_posedge(int cpol, int cpha);
-
+struct DataTuple {
+	int byte;
+	float last_read_time;
+};
 
 int main(int argc, char** argv) {
 	/* This macro silences compiler errors about unused variables. */
@@ -62,26 +65,34 @@ int main(int argc, char** argv) {
 		
 		// ===================== READ FIRST EXCHANGE ==========================
 		// First exchange - only read mosi
-		int mosi_byte = 0;
+		// int mosi_byte = 0;
 
 		// Hold the time of the most recent falling or rising edge in clock
 		// Start with the previously found beginning of transaction time
-		float next_read_time = next_ss_edge_time;
+		// float next_read_time = next_ss_edge_time;
 
 		// Read first 8 bits of mosi by reading at next eight edges
-		for (int i = 0; i < LEN_EXCH; i++) {
-			// Find next clock edge (pos or neg based on CPHA/CPOL)
-			next_read_time = next_edge(
-				w, 
-				SCLK, 
-				next_read_time, 
-				read_bytes_on_posedge, 
-				!read_bytes_on_posedge
-			);
+		struct DataTuple data = read_exchange(
+			w,
+			MOSI,
+			next_ss_edge_time,
+			read_bytes_on_posedge
+		);
+		int mosi_byte = data.byte;
+		float last_read_time = data.last_read_time;
+		// for (int i = 0; i < LEN_EXCH; i++) {
+		// 	// Find next clock edge (pos or neg based on CPHA/CPOL)
+		// 	next_read_time = next_edge(
+		// 		w, 
+		// 		SCLK, 
+		// 		next_read_time, 
+		// 		read_bytes_on_posedge, 
+		// 		!read_bytes_on_posedge
+		// 	);
 
-			// Shift byte to the left and read next bit
-			mosi_byte = (mosi_byte << 1) | signal_at(w, MOSI, next_read_time);
-		}
+		// 	// Shift byte to the left and read next bit
+		// 	mosi_byte = (mosi_byte << 1) | signal_at(w, MOSI, next_read_time);
+		// }
 
 		// Split MOSI signal
 		int addr = mosi_byte >> 2;			 // bits 7:2 is address to read/write
@@ -107,53 +118,71 @@ int main(int argc, char** argv) {
 			// (for reads) or MOSI (for writes)
 
 			// Read next exchange to get N from MOSI
-			mosi_byte = 0;
-			for (int i = 0; i < LEN_EXCH; i++) {
-				// Find next clock edge (pos or neg based on CPHA/CPOL)
-				next_read_time = next_edge(
-					w, 
-					SCLK, 
-					next_read_time, 
-					read_bytes_on_posedge, 
-					!read_bytes_on_posedge
-				);
+			// mosi_byte = 0;
+			// for (int i = 0; i < LEN_EXCH; i++) {
+			// 	// Find next clock edge (pos or neg based on CPHA/CPOL)
+			// 	next_read_time = next_edge(
+			// 		w, 
+			// 		SCLK, 
+			// 		next_read_time, 
+			// 		read_bytes_on_posedge, 
+			// 		!read_bytes_on_posedge
+			// 	);
 				
-				// Shift byte to the left and read next bit
-				mosi_byte = (mosi_byte << 1) | signal_at(
-					w, 
-					MOSI, 
-					next_read_time
-				);
-			}
+			// 	// Shift byte to the left and read next bit
+			// 	mosi_byte = (mosi_byte << 1) | signal_at(
+			// 		w, 
+			// 		MOSI, 
+			// 		next_read_time
+			// 	);
+			// }
+			data = read_exchange(
+				w,
+				MOSI,
+				last_read_time,
+				read_bytes_on_posedge
+			);
+
+			// Save N
+			int n = data.byte;
+			last_read_time = data.last_read_time;
 
 			// Hold N
-			int n = mosi_byte;
+			// int n = mosi_byte;
 
 			// Hold value of each exchange. There will be N values
 			int values[n];
 
 			// Read N exchanges to read entire transaction
 			for (int j = 0; j < n; j++) {
-				values[j] = 0;
+				// values[j] = 0;
 
 				// Read an exchange from MISO or MOSI
-				for (int i = 0; i < LEN_EXCH; i++) {
-					// Find next clock edge (pos or neg based on CPHA/CPOL)
-					next_read_time = next_edge(
-						w, 
-						SCLK, 
-						next_read_time, 
-						read_bytes_on_posedge, 
-						!read_bytes_on_posedge
-					);
+				// for (int i = 0; i < LEN_EXCH; i++) {
+				// 	// Find next clock edge (pos or neg based on CPHA/CPOL)
+				// 	next_read_time = next_edge(
+				// 		w, 
+				// 		SCLK, 
+				// 		next_read_time, 
+				// 		read_bytes_on_posedge, 
+				// 		!read_bytes_on_posedge
+				// 	);
 					
-					// Shift byte to the left and read next bit
-					values[j] = (values[j] << 1) | signal_at(
-						w, 
-						value_signal, 
-						next_read_time
-					);
-				}
+				// 	// Shift byte to the left and read next bit
+				// 	values[j] = (values[j] << 1) | signal_at(
+				// 		w, 
+				// 		value_signal, 
+				// 		next_read_time
+				// 	);
+				// }
+				data = read_exchange(
+					w,
+					value_signal,
+					last_read_time,
+					read_bytes_on_posedge
+				);
+				values[j] = data.byte;
+				last_read_time = data.last_read_time;
 			}
 
 			// Print out transaction
@@ -172,24 +201,32 @@ int main(int argc, char** argv) {
 			// Only read the next exchange (8 bits) to get value of transaction 
 
 			// Read eight bytes from MOSI or MISO
-			int value = 0;
-			for (int i = 0; i < LEN_EXCH; i++) {
-				// Find next clock edge (pos or neg based on CPHA/CPOL)
-				next_read_time = next_edge(
-					w, 
-					SCLK, 
-					next_read_time, 
-					read_bytes_on_posedge, 
-					!read_bytes_on_posedge
-				);
+			// int value = 0;
+			// for (int i = 0; i < LEN_EXCH; i++) {
+			// 	// Find next clock edge (pos or neg based on CPHA/CPOL)
+			// 	next_read_time = next_edge(
+			// 		w, 
+			// 		SCLK, 
+			// 		next_read_time, 
+			// 		read_bytes_on_posedge, 
+			// 		!read_bytes_on_posedge
+			// 	);
 				
-				// Shift byte to the left and read next bit
-				value = (value << 1) | signal_at(
-					w, 
-					value_signal, 
-					next_read_time
-				);
-			}
+			// 	// Shift byte to the left and read next bit
+			// 	value = (value << 1) | signal_at(
+			// 		w, 
+			// 		value_signal, 
+			// 		next_read_time
+			// 	);
+			// }
+			data = read_exchange(
+				w,
+				value_signal,
+				last_read_time,
+				read_bytes_on_posedge
+			);
+			int value = data.byte;
+			last_read_time = data.last_read_time;
 
 			// Print this transaction
 			printf("%s %02x %02x\n", read_or_write, addr, value);
@@ -197,7 +234,7 @@ int main(int argc, char** argv) {
 
 		// Check for next ss falling edge after last read time to find
 		// next transaction
-		next_ss_edge_time = next_edge(w, SS, next_read_time, false, true);
+		next_ss_edge_time = next_edge(w, SS, last_read_time, false, true);
 	}
 
 	free_waves(w);
@@ -217,9 +254,53 @@ bool check_if_posedge(int cpol, int cpha) {
 	 * 
 	 * Returns: true if we should check posedge,
 	 * 			false if we should check negedge
-	
-	*/
+	 */
 
 	return cpol == cpha;
 }
 
+struct DataTuple read_exchange(
+	waves* w, 
+	char* signal, 
+	float last_read_time, 
+	bool read_bytes_on_posedge
+) {
+	/*
+	 * Read an exchange (8 bits) for the given signal from the given wave object
+	 * - Starts lookings for clock edges from the given "last_read_time"
+	 * - Looks for rising edges if "read_bytes_on_posedge" is true. Otherwise,
+	 *   looks for falling edges
+	 */
+	
+	// Length of exchange is always 8 bits
+	int LEN_EXCH = 8;
+	
+	// Time to read next data point and look for next edge from. 
+	// Start with provided time
+	float next_read_time = last_read_time;
+
+	// Data of exchange - read from given "signal"
+	int value;
+
+	for (int i = 0; i < LEN_EXCH; i++) {
+		// Find next clock edge (pos or neg based on "read_bytes_on_posedge")
+		next_read_time = next_edge(
+			w, 
+			SCLK, 
+			next_read_time, 
+			read_bytes_on_posedge,
+			!read_bytes_on_posedge
+		);
+		
+		// Shift byte to the left and read next bit
+		value = (value << 1) | signal_at(
+			w, 
+			signal, 
+			next_read_time
+		);
+	}
+
+	// Return value that was read and the last read time
+	struct DataTuple ret = { value, next_read_time };
+	return ret;
+}
