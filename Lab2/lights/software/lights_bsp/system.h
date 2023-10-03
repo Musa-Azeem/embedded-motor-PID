@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Thu Sep 28 10:14:45 EDT 2023
+ * Generated: Tue Oct 03 11:50:20 EDT 2023
  */
 
 /*
@@ -158,7 +158,7 @@
 #define LEDS_BIT_CLEARING_EDGE_REGISTER 0
 #define LEDS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LEDS_CAPTURE 0
-#define LEDS_DATA_WIDTH 8
+#define LEDS_DATA_WIDTH 26
 #define LEDS_DO_TEST_BENCH_WIRING 0
 #define LEDS_DRIVEN_SIM_VALUE 0
 #define LEDS_EDGE_TYPE "NONE"
@@ -217,7 +217,7 @@
  */
 
 #define ALT_INCLUDE_INSTRUCTION_RELATED_EXCEPTION_API
-#define ALT_MAX_FD 4
+#define ALT_MAX_FD 32
 #define ALT_SYS_CLK none
 #define ALT_TIMESTAMP_CLK none
 

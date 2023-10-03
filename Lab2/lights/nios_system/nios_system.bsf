@@ -40,8 +40,8 @@ refer to the applicable agreement for further details.
 	(port
 		(pt 0 112)
 		(output)
-		(text "leds_export[7..0]" (rect 0 0 66 12)(font "Arial" (font_size 8)))
-		(text "leds_export[7..0]" (rect 4 101 106 112)(font "Arial" (font_size 8)))
+		(text "leds_export[25..0]" (rect 0 0 70 12)(font "Arial" (font_size 8)))
+		(text "leds_export[25..0]" (rect 4 101 112 112)(font "Arial" (font_size 8)))
 		(line (pt 0 112)(pt 224 112)(line_width 3))
 	)
 	(port
