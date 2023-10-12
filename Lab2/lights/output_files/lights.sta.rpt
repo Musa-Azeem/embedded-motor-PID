@@ -1,5 +1,5 @@
 Timing Analyzer report for lights
-Tue Oct  3 11:42:44 2023
+Thu Oct  5 10:08:19 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -131,15 +131,15 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 16          ;
 ; Maximum allowed            ; 8           ;
 ;                            ;             ;
-; Average used               ; 1.32        ;
+; Average used               ; 1.31        ;
 ; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  11.0%      ;
-;     Processor 3            ;   6.4%      ;
-;     Processor 4            ;   3.6%      ;
-;     Processors 5-8         ;   2.8%      ;
+;     Processor 2            ;  10.8%      ;
+;     Processor 3            ;   6.1%      ;
+;     Processor 4            ;   3.5%      ;
+;     Processors 5-8         ;   2.7%      ;
 +----------------------------+-------------+
 
 
@@ -148,10 +148,10 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                                                                                   ; Status ; Read at                  ;
 +-----------------------------------------------------------------------------------------------------------------+--------+--------------------------+
-; SDC1.sdc                                                                                                        ; OK     ; Tue Oct  3 11:42:41 2023 ;
-; /acct/mmazeem/491/CSCE491/Lab2/lights/db/ip/nios_system/submodules/altera_avalon_st_handshake_clock_crosser.sdc ; OK     ; Tue Oct  3 11:42:41 2023 ;
-; /acct/mmazeem/491/CSCE491/Lab2/lights/db/ip/nios_system/submodules/altera_reset_controller.sdc                  ; OK     ; Tue Oct  3 11:42:41 2023 ;
-; /acct/mmazeem/491/CSCE491/Lab2/lights/db/ip/nios_system/submodules/nios_system_nios2_gen2_0_cpu.sdc             ; OK     ; Tue Oct  3 11:42:41 2023 ;
+; SDC1.sdc                                                                                                        ; OK     ; Thu Oct  5 10:08:16 2023 ;
+; /acct/mmazeem/491/CSCE491/Lab2/lights/db/ip/nios_system/submodules/altera_avalon_st_handshake_clock_crosser.sdc ; OK     ; Thu Oct  5 10:08:16 2023 ;
+; /acct/mmazeem/491/CSCE491/Lab2/lights/db/ip/nios_system/submodules/altera_reset_controller.sdc                  ; OK     ; Thu Oct  5 10:08:16 2023 ;
+; /acct/mmazeem/491/CSCE491/Lab2/lights/db/ip/nios_system/submodules/nios_system_nios2_gen2_0_cpu.sdc             ; OK     ; Thu Oct  5 10:08:16 2023 ;
 +-----------------------------------------------------------------------------------------------------------------+--------+--------------------------+
 
 
@@ -4935,7 +4935,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Tue Oct  3 11:42:40 2023
+    Info: Processing started: Thu Oct  5 10:08:15 2023
 Info: Command: quartus_sta lights -c lights
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -5138,8 +5138,8 @@ Info (332114): Report Metastability: Found 16 synchronizer chains.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 25 warnings
-    Info: Peak virtual memory: 1041 megabytes
-    Info: Processing ended: Tue Oct  3 11:42:44 2023
+    Info: Peak virtual memory: 1032 megabytes
+    Info: Processing ended: Thu Oct  5 10:08:19 2023
     Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:03
 
