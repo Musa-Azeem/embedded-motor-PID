@@ -96,6 +96,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "LEDG[0]",
+					"strict" : false
+				},
+				{
 					"name" : "DRAM_DQ[0]",
 					"strict" : false
 				},

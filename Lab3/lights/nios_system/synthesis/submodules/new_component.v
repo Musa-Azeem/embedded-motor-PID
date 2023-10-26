@@ -15,9 +15,11 @@ module new_component (
 		input  wire        avalon_slave_address,   // avalon_slave.address
 		input  wire [31:0] avalon_slave_writedata, //             .writedata
 		input  wire        avalon_slave_write,     //             .write
-		input  wire [25:0] leds_new_signal         //         leds.new_signal
+		output wire [25:0] leds_new_signal         //         leds.new_signal
 	);
 
 	// TODO: Auto-generated HDL template
+
+	assign leds_new_signal = 26'b00000000000000000000000000;
 
 endmodule

@@ -29,7 +29,7 @@
    {
       datum baseAddress
       {
-         value = "268439640";
+         value = "268439624";
          type = "String";
       }
    }
@@ -45,7 +45,7 @@
    {
       datum baseAddress
       {
-         value = "268439632";
+         value = "268439616";
          type = "String";
       }
    }
@@ -78,6 +78,14 @@
       datum baseAddress
       {
          value = "268437504";
+         type = "String";
+      }
+   }
+   element nios_system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone IV E";
          type = "String";
       }
    }
@@ -222,7 +230,7 @@
   <parameter name="dataAddrWidth" value="29" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x8000000' end='0x10000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x10000800' end='0x10001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='performance_counter_0.control_slave' start='0x10001000' end='0x10001040' type='altera_avalon_performance_counter.control_slave' /><slave name='led_pwm_0.avalon_slave' start='0x10001050' end='0x10001058' type='led_pwm.avalon_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10001058' end='0x10001060' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x8000000' end='0x10000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x10000800' end='0x10001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='performance_counter_0.control_slave' start='0x10001000' end='0x10001040' type='altera_avalon_performance_counter.control_slave' /><slave name='led_pwm_0.avalon_slave' start='0x10001040' end='0x10001048' type='led_pwm.avalon_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10001048' end='0x10001050' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -415,7 +423,7 @@
    start="nios2_gen2_0.data_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x10001058" />
+  <parameter name="baseAddress" value="0x10001048" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -424,7 +432,7 @@
    start="nios2_gen2_0.data_master"
    end="led_pwm_0.avalon_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x10001050" />
+  <parameter name="baseAddress" value="0x10001040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection

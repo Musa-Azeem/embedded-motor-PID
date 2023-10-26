@@ -5,7 +5,7 @@
 `timescale 1 ps / 1 ps
 module nios_system (
 		input  wire        clk_clk,                           //                         clk.clk
-		input  wire [25:0] leds_new_signal,                   //                        leds.new_signal
+		output wire [25:0] leds_new_signal,                   //                        leds.new_signal
 		output wire [12:0] new_sdram_controller_0_wire_addr,  // new_sdram_controller_0_wire.addr
 		output wire [1:0]  new_sdram_controller_0_wire_ba,    //                            .ba
 		output wire        new_sdram_controller_0_wire_cas_n, //                            .cas_n

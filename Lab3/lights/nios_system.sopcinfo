@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="nios_system" kind="nios_system" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2023.10.12.10:32:33 -->
+ <!-- 2023.10.26.11:50:41 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1697121153</value>
+  <value>1698335441</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -1622,7 +1622,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="associatedReset">
     <type>java.lang.String</type>
-    <value></value>
+    <value>rst</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -1648,7 +1648,7 @@ parameters are a RESULT of the module parameters. -->
    <isStart>false</isStart>
    <port>
     <name>leds_new_signal</name>
-    <direction>Input</direction>
+    <direction>Output</direction>
     <width>26</width>
     <role>new_signal</role>
    </port>
@@ -4228,7 +4228,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x8000000' end='0x10000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x10000800' end='0x10001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='performance_counter_0.control_slave' start='0x10001000' end='0x10001040' type='altera_avalon_performance_counter.control_slave' /><slave name='led_pwm_0.avalon_slave' start='0x10001050' end='0x10001058' type='led_pwm.avalon_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10001058' end='0x10001060' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x8000000' end='0x10000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x10000800' end='0x10001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='performance_counter_0.control_slave' start='0x10001000' end='0x10001040' type='altera_avalon_performance_counter.control_slave' /><slave name='led_pwm_0.avalon_slave' start='0x10001040' end='0x10001048' type='led_pwm.avalon_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10001048' end='0x10001050' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4905,7 +4905,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>jtag_uart_0</moduleName>
     <slaveName>avalon_jtag_slave</slaveName>
     <name>jtag_uart_0.avalon_jtag_slave</name>
-    <baseAddress>268439640</baseAddress>
+    <baseAddress>268439624</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -4913,7 +4913,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>led_pwm_0</moduleName>
     <slaveName>avalon_slave</slaveName>
     <name>led_pwm_0.avalon_slave</name>
-    <baseAddress>268439632</baseAddress>
+    <baseAddress>268439616</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -7120,7 +7120,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x10001058</value>
+   <value>0x10001048</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -7171,7 +7171,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x10001050</value>
+   <value>0x10001040</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

@@ -31,18 +31,18 @@ refer to the applicable agreement for further details.
 		(line (pt 0 72)(pt 224 72)(line_width 1))
 	)
 	(port
-		(pt 0 112)
-		(input)
-		(text "leds_new_signal[25..0]" (rect 0 0 88 12)(font "Arial" (font_size 8)))
-		(text "leds_new_signal[25..0]" (rect 4 101 136 112)(font "Arial" (font_size 8)))
-		(line (pt 0 112)(pt 224 112)(line_width 3))
-	)
-	(port
 		(pt 0 320)
 		(input)
 		(text "reset_reset_n" (rect 0 0 56 12)(font "Arial" (font_size 8)))
 		(text "reset_reset_n" (rect 4 309 82 320)(font "Arial" (font_size 8)))
 		(line (pt 0 320)(pt 224 320)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(output)
+		(text "leds_new_signal[25..0]" (rect 0 0 88 12)(font "Arial" (font_size 8)))
+		(text "leds_new_signal[25..0]" (rect 4 101 136 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 224 112)(line_width 3))
 	)
 	(port
 		(pt 0 152)

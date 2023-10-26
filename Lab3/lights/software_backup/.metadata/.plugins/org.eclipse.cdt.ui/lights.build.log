@@ -1,9 +1,0 @@
-11:45:22 **** Incremental Build of configuration Nios II for project lights ****
-make all 
-Info: Building ../lights_bsp/
-make --no-print-directory -C ../lights_bsp/
-[BSP build complete]
-[lights build complete]
-
-11:45:22 Build Finished (took 163ms)
-

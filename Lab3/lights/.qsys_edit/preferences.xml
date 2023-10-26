@@ -5,6 +5,7 @@
   <columns>
    <connections preferredWidth="223" />
    <irq preferredWidth="34" />
+   <inputclock preferredWidth="221" />
   </columns>
  </systemtable>
  <library expandedCategories="Project,Library" />
