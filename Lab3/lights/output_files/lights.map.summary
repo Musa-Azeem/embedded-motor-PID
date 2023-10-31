@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Thu Oct 26 11:51:11 2023
+Analysis & Synthesis Status : Successful - Tue Oct 31 11:45:31 2023
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 Revision Name : lights
 Top-level Entity Name : lights
 Family : Cyclone IV E
-Total logic elements : 5,675
-    Total combinational functions : 4,188
-    Dedicated logic registers : 3,569
-Total registers : 3569
+Total logic elements : 7,470
+    Total combinational functions : 5,963
+    Dedicated logic registers : 4,666
+Total registers : 4666
 Total pins : 88
 Total virtual pins : 0
 Total memory bits : 65,664

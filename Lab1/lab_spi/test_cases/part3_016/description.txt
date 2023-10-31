@@ -1,1 +1,0 @@
-In this test case, CPOL=1 and CPHA=0

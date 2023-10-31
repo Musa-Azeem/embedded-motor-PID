@@ -511,10 +511,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to EX_IO[3]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to EX_IO[4]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to EX_IO[5]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to EX_IO[6]
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
-set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_location_assignment PIN_A17 -to ENET0_GTX_CLK
 set_location_assignment PIN_A21 -to ENET0_INT_N
 set_location_assignment PIN_C20 -to ENET0_MDC
@@ -1100,9 +1096,13 @@ set_location_assignment PIN_G12 -to UART_RXD
 set_location_assignment PIN_G9 -to UART_TXD
 set_location_assignment PIN_A10 -to VGA_B[1]
 set_location_assignment PIN_H12 -to VGA_G[3]
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name VERILOG_FILE new_component.v
 set_global_assignment -name QSYS_FILE nios_system.qsys
 set_global_assignment -name SYSTEMVERILOG_FILE lights.sv
 set_global_assignment -name SDC_FILE SDC1.sdc
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
