@@ -2,9 +2,9 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Oct 5, 2023 10:23:38 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1696515818261</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>/acct/mmazeem/491/CSCE491/Lab2/lights/software/lights_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>Nov 2, 2023 12:26:38 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1698942398684</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>/acct/mmazeem/491/CSCE491/Lab3/lights/software/lights_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../nios_system.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
@@ -899,6 +899,12 @@
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
         <MemoryMap>
+                <slaveDescriptor>key</slaveDescriptor>
+                <addressRange>0x00000000 - 0x0000000F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>new_sdram_controller_0</slaveDescriptor>
                 <addressRange>0x08000000 - 0x0FFFFFFF</addressRange>
                 <addressSpan>134217728</addressSpan>
@@ -911,14 +917,14 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>LEDS</slaveDescriptor>
-                <addressRange>0x10001040 - 0x1000104F</addressRange>
-                <addressSpan>16</addressSpan>
+                <slaveDescriptor>led_pwm_0</slaveDescriptor>
+                <addressRange>0x10001040 - 0x10001047</addressRange>
+                <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x10001050 - 0x10001057</addressRange>
+                <addressRange>0x10001048 - 0x1000104F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

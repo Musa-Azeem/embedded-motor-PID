@@ -12,7 +12,8 @@
 			new_sdram_controller_0_wire_ras_n : out   std_logic;                                        -- ras_n
 			new_sdram_controller_0_wire_we_n  : out   std_logic;                                        -- we_n
 			reset_reset_n                     : in    std_logic                     := 'X';             -- reset_n
-			sdram_clk_clk                     : out   std_logic                                         -- clk
+			sdram_clk_clk                     : out   std_logic;                                        -- clk
+			key_export                        : in    std_logic_vector(3 downto 0)  := (others => 'X')  -- export
 		);
 	end component nios_system;
 
@@ -30,6 +31,7 @@
 			new_sdram_controller_0_wire_ras_n => CONNECTED_TO_new_sdram_controller_0_wire_ras_n, --                            .ras_n
 			new_sdram_controller_0_wire_we_n  => CONNECTED_TO_new_sdram_controller_0_wire_we_n,  --                            .we_n
 			reset_reset_n                     => CONNECTED_TO_reset_reset_n,                     --                       reset.reset_n
-			sdram_clk_clk                     => CONNECTED_TO_sdram_clk_clk                      --                   sdram_clk.clk
+			sdram_clk_clk                     => CONNECTED_TO_sdram_clk_clk,                     --                   sdram_clk.clk
+			key_export                        => CONNECTED_TO_key_export                         --                         key.export
 		);
 

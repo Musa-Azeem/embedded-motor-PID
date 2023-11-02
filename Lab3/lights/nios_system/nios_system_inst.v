@@ -11,6 +11,7 @@
 		.new_sdram_controller_0_wire_ras_n (<connected-to-new_sdram_controller_0_wire_ras_n>), //                            .ras_n
 		.new_sdram_controller_0_wire_we_n  (<connected-to-new_sdram_controller_0_wire_we_n>),  //                            .we_n
 		.reset_reset_n                     (<connected-to-reset_reset_n>),                     //                       reset.reset_n
-		.sdram_clk_clk                     (<connected-to-sdram_clk_clk>)                      //                   sdram_clk.clk
+		.sdram_clk_clk                     (<connected-to-sdram_clk_clk>),                     //                   sdram_clk.clk
+		.key_export                        (<connected-to-key_export>)                         //                         key.export
 	);
 

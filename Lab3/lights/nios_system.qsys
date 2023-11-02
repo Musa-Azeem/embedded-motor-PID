@@ -33,6 +33,14 @@
          type = "String";
       }
    }
+   element key
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+   }
    element led_pwm_0
    {
       datum _sortIndex
@@ -143,6 +151,11 @@
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
+ <interface
+   name="key"
+   internal="key.external_connection"
+   type="conduit"
+   dir="end" />
  <interface name="leds" internal="led_pwm_0.leds" type="conduit" dir="end" />
  <interface
    name="new_sdram_controller_0_wire"
@@ -175,6 +188,20 @@
   <parameter name="useRelativePathForSimFile" value="false" />
   <parameter name="writeBufferDepth" value="64" />
   <parameter name="writeIRQThreshold" value="8" />
+ </module>
+ <module name="key" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="4" />
  </module>
  <module name="led_pwm_0" kind="led_pwm" version="1.0" enabled="1" />
  <module
@@ -230,7 +257,7 @@
   <parameter name="dataAddrWidth" value="29" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x8000000' end='0x10000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x10000800' end='0x10001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='performance_counter_0.control_slave' start='0x10001000' end='0x10001040' type='altera_avalon_performance_counter.control_slave' /><slave name='led_pwm_0.avalon_slave' start='0x10001040' end='0x10001048' type='led_pwm.avalon_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10001048' end='0x10001050' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='key.s1' start='0x0' end='0x10' type='altera_avalon_pio.s1' /><slave name='new_sdram_controller_0.s1' start='0x8000000' end='0x10000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x10000800' end='0x10001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='performance_counter_0.control_slave' start='0x10001000' end='0x10001040' type='altera_avalon_performance_counter.control_slave' /><slave name='led_pwm_0.avalon_slave' start='0x10001040' end='0x10001048' type='led_pwm.avalon_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10001048' end='0x10001050' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -465,6 +492,15 @@
  <connection
    kind="avalon"
    version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="key.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
    start="nios2_gen2_0.instruction_master"
    end="nios2_gen2_0.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -480,6 +516,7 @@
   <parameter name="baseAddress" value="0x08000000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="key.clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -552,6 +589,7 @@
    version="18.1"
    start="clk_0.clk_reset"
    end="performance_counter_0.reset" />
+ <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="key.reset" />
  <connection
    kind="reset"
    version="18.1"

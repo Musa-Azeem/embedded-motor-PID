@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-newSoftwareExampleWizardPage.defaultLocation=/acct/mmazeem/491/CSCE491/Lab2/lights/software/lights
-newSoftwareExampleWizardPage.sopcinfoFile=/acct/mmazeem/491/CSCE491/Lab2/lights/nios_system.sopcinfo
-newSoftwareExampleWizardPage2.newBspLocation=/acct/mmazeem/491/CSCE491/Lab2/lights/software/lights_bsp
+newSoftwareExampleWizardPage.defaultLocation=/acct/mmazeem/491/CSCE491/Lab3/lights/software/lights
+newSoftwareExampleWizardPage.sopcinfoFile=/acct/mmazeem/491/CSCE491/Lab3/lights/nios_system.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=/acct/mmazeem/491/CSCE491/Lab3/lights/software/lights_bsp

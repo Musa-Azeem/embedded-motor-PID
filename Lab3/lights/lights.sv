@@ -26,7 +26,8 @@ module lights (input CLOCK_50,
 		.new_sdram_controller_0_wire_ras_n (DRAM_RAS_N), //                            .ras_n
 		.new_sdram_controller_0_wire_we_n  (DRAM_WE_N),  //                            .we_n
 		.sdram_clk_clk                     (DRAM_CLK),
-		.leds_new_signal						  ({LEDR, LEDG}) 
+		.leds_new_signal						  ({LEDR, LEDG}),
+		.key_export (KEY)
 	);
 					
 endmodule

@@ -5,6 +5,7 @@
 `timescale 1 ps / 1 ps
 module nios_system (
 		input  wire        clk_clk,                           //                         clk.clk
+		input  wire [3:0]  key_export,                        //                         key.export
 		output wire [25:0] leds_new_signal,                   //                        leds.new_signal
 		output wire [12:0] new_sdram_controller_0_wire_addr,  // new_sdram_controller_0_wire.addr
 		output wire [1:0]  new_sdram_controller_0_wire_ba,    //                            .ba
@@ -66,12 +67,14 @@ module nios_system (
 	wire         mm_interconnect_0_new_sdram_controller_0_s1_readdatavalid;           // new_sdram_controller_0:za_valid -> mm_interconnect_0:new_sdram_controller_0_s1_readdatavalid
 	wire         mm_interconnect_0_new_sdram_controller_0_s1_write;                   // mm_interconnect_0:new_sdram_controller_0_s1_write -> new_sdram_controller_0:az_wr_n
 	wire  [31:0] mm_interconnect_0_new_sdram_controller_0_s1_writedata;               // mm_interconnect_0:new_sdram_controller_0_s1_writedata -> new_sdram_controller_0:az_data
+	wire  [31:0] mm_interconnect_0_key_s1_readdata;                                   // key:readdata -> mm_interconnect_0:key_s1_readdata
+	wire   [1:0] mm_interconnect_0_key_s1_address;                                    // mm_interconnect_0:key_s1_address -> key:address
 	wire         irq_mapper_receiver0_irq;                                            // jtag_uart_0:av_irq -> irq_mapper:receiver0_irq
 	wire  [31:0] nios2_gen2_0_irq_irq;                                                // irq_mapper:sender_irq -> nios2_gen2_0:irq
 	wire         rst_controller_reset_out_reset;                                      // rst_controller:reset_out -> [irq_mapper:reset, jtag_uart_0:rst_n, led_pwm_0:rst_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, performance_counter_0:reset_n, rst_translator:in_reset]
 	wire         rst_controller_reset_out_reset_req;                                  // rst_controller:reset_req -> [nios2_gen2_0:reset_req, rst_translator:reset_req_in]
-	wire         rst_controller_001_reset_out_reset;                                  // rst_controller_001:reset_out -> [mm_interconnect_0:new_sdram_controller_0_reset_reset_bridge_in_reset_reset, new_sdram_controller_0:reset_n]
-	wire         rst_controller_002_reset_out_reset;                                  // rst_controller_002:reset_out -> sys_sdram_pll_0:ref_reset_reset
+	wire         rst_controller_001_reset_out_reset;                                  // rst_controller_001:reset_out -> [key:reset_n, mm_interconnect_0:key_reset_reset_bridge_in_reset_reset, sys_sdram_pll_0:ref_reset_reset]
+	wire         rst_controller_002_reset_out_reset;                                  // rst_controller_002:reset_out -> [mm_interconnect_0:new_sdram_controller_0_reset_reset_bridge_in_reset_reset, new_sdram_controller_0:reset_n]
 
 	nios_system_jtag_uart_0 jtag_uart_0 (
 		.clk            (sys_sdram_pll_0_sys_clk_clk),                                 //               clk.clk
@@ -86,6 +89,14 @@ module nios_system (
 		.av_irq         (irq_mapper_receiver0_irq)                                     //               irq.irq
 	);
 
+	nios_system_key key (
+		.clk      (clk_clk),                             //                 clk.clk
+		.reset_n  (~rst_controller_001_reset_out_reset), //               reset.reset_n
+		.address  (mm_interconnect_0_key_s1_address),    //                  s1.address
+		.readdata (mm_interconnect_0_key_s1_readdata),   //                    .readdata
+		.in_port  (key_export)                           // external_connection.export
+	);
+
 	new_component led_pwm_0 (
 		.clk_clk                (sys_sdram_pll_0_sys_clk_clk),                        //          clk.clk
 		.rst_reset              (rst_controller_reset_out_reset),                     //          rst.reset
@@ -97,7 +108,7 @@ module nios_system (
 
 	nios_system_new_sdram_controller_0 new_sdram_controller_0 (
 		.clk            (sdram_clk_clk),                                             //   clk.clk
-		.reset_n        (~rst_controller_001_reset_out_reset),                       // reset.reset_n
+		.reset_n        (~rst_controller_002_reset_out_reset),                       // reset.reset_n
 		.az_addr        (mm_interconnect_0_new_sdram_controller_0_s1_address),       //    s1.address
 		.az_be_n        (~mm_interconnect_0_new_sdram_controller_0_s1_byteenable),   //      .byteenable_n
 		.az_cs          (mm_interconnect_0_new_sdram_controller_0_s1_chipselect),    //      .chipselect
@@ -161,16 +172,18 @@ module nios_system (
 
 	nios_system_sys_sdram_pll_0 sys_sdram_pll_0 (
 		.ref_clk_clk        (clk_clk),                            //      ref_clk.clk
-		.ref_reset_reset    (rst_controller_002_reset_out_reset), //    ref_reset.reset
+		.ref_reset_reset    (rst_controller_001_reset_out_reset), //    ref_reset.reset
 		.sys_clk_clk        (sys_sdram_pll_0_sys_clk_clk),        //      sys_clk.clk
 		.sdram_clk_clk      (sdram_clk_clk),                      //    sdram_clk.clk
 		.reset_source_reset ()                                    // reset_source.reset
 	);
 
 	nios_system_mm_interconnect_0 mm_interconnect_0 (
+		.clk_0_clk_clk                                            (clk_clk),                                                             //                                          clk_0_clk.clk
 		.sys_sdram_pll_0_sdram_clk_clk                            (sdram_clk_clk),                                                       //                          sys_sdram_pll_0_sdram_clk.clk
 		.sys_sdram_pll_0_sys_clk_clk                              (sys_sdram_pll_0_sys_clk_clk),                                         //                            sys_sdram_pll_0_sys_clk.clk
-		.new_sdram_controller_0_reset_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),                                  // new_sdram_controller_0_reset_reset_bridge_in_reset.reset
+		.key_reset_reset_bridge_in_reset_reset                    (rst_controller_001_reset_out_reset),                                  //                    key_reset_reset_bridge_in_reset.reset
+		.new_sdram_controller_0_reset_reset_bridge_in_reset_reset (rst_controller_002_reset_out_reset),                                  // new_sdram_controller_0_reset_reset_bridge_in_reset.reset
 		.nios2_gen2_0_reset_reset_bridge_in_reset_reset           (rst_controller_reset_out_reset),                                      //           nios2_gen2_0_reset_reset_bridge_in_reset.reset
 		.nios2_gen2_0_data_master_address                         (nios2_gen2_0_data_master_address),                                    //                           nios2_gen2_0_data_master.address
 		.nios2_gen2_0_data_master_waitrequest                     (nios2_gen2_0_data_master_waitrequest),                                //                                                   .waitrequest
@@ -193,6 +206,8 @@ module nios_system (
 		.jtag_uart_0_avalon_jtag_slave_writedata                  (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata),           //                                                   .writedata
 		.jtag_uart_0_avalon_jtag_slave_waitrequest                (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest),         //                                                   .waitrequest
 		.jtag_uart_0_avalon_jtag_slave_chipselect                 (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect),          //                                                   .chipselect
+		.key_s1_address                                           (mm_interconnect_0_key_s1_address),                                    //                                             key_s1.address
+		.key_s1_readdata                                          (mm_interconnect_0_key_s1_readdata),                                   //                                                   .readdata
 		.led_pwm_0_avalon_slave_address                           (mm_interconnect_0_led_pwm_0_avalon_slave_address),                    //                             led_pwm_0_avalon_slave.address
 		.led_pwm_0_avalon_slave_write                             (mm_interconnect_0_led_pwm_0_avalon_slave_write),                      //                                                   .write
 		.led_pwm_0_avalon_slave_writedata                         (mm_interconnect_0_led_pwm_0_avalon_slave_writedata),                  //                                                   .writedata
@@ -317,7 +332,7 @@ module nios_system (
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_001 (
 		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
-		.clk            (sdram_clk_clk),                      //       clk.clk
+		.clk            (clk_clk),                            //       clk.clk
 		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
 		.reset_req      (),                                   // (terminated)
 		.reset_req_in0  (1'b0),                               // (terminated)
@@ -380,7 +395,7 @@ module nios_system (
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_002 (
 		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
-		.clk            (clk_clk),                            //       clk.clk
+		.clk            (sdram_clk_clk),                      //       clk.clk
 		.reset_out      (rst_controller_002_reset_out_reset), // reset_out.reset
 		.reset_req      (),                                   // (terminated)
 		.reset_req_in0  (1'b0),                               // (terminated)
