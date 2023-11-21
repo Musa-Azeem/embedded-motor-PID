@@ -1,0 +1,479 @@
+!SESSION 2023-11-02 10:21:47.728 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2023-11-02 10:21:52.561
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-11-02 10:22:39.306
+!MESSAGE Indexed 'lights_bsp' (81 sources, 149 headers) in 1.42 sec: 5,449 declarations; 8,549 references; 49 unresolved inclusions; 3 syntax errors; 95 unresolved names (0.67%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-11-02 10:22:39.998
+!MESSAGE Indexed 'lights' (1 sources, 21 headers) in 0.056 sec: 983 declarations; 1,599 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.debug.core 4 102 2023-11-02 10:28:04.540
+!MESSAGE A project was not specified in the launch configuration.
+
+!ENTRY org.eclipse.cdt.debug.core 4 102 2023-11-02 10:29:32.540
+!MESSAGE A project was not specified in the launch configuration.
+
+!ENTRY org.eclipse.cdt.debug.core 4 102 2023-11-02 10:29:54.689
+!MESSAGE A project was not specified in the launch configuration.
+!SESSION 2023-11-02 10:33:06.000 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-11-02 10:33:08.492
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2023-11-02 10:33:12.900
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:35:05.691
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:35:07.205
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:40:46.758
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:40:46.915
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:40:48.427
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:44:59.493
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:44:59.584
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:45:01.098
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:45:56.552
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:45:58.057
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:46:22.285
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:46:22.391
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:46:23.901
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:54:16.108
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:54:16.192
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:54:17.708
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:58:32.078
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 10:58:33.582
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:07:01.601
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:07:01.675
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:07:03.171
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:10:40.352
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:10:40.439
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:10:41.954
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:14:21.601
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:14:21.679
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:14:23.168
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:20:50.352
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:20:50.454
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:20:52.000
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:21:19.720
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:21:19.800
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:21:21.325
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:29:43.135
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:29:43.645
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:29:45.182
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+!SESSION 2023-11-02 11:36:00.129 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2023-11-02 11:36:07.200
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+!SESSION 2023-11-02 11:38:03.577 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2023-11-02 11:38:09.627
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:38:51.169
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 11:38:52.290
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:38:52.336
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:47:35.486
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:47:35.572
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 11:47:36.697
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:47:36.733
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:47:48.889
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:47:48.972
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 11:47:50.096
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:47:50.132
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:58:45.846
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-7]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:58:46.112
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 11:58:47.252
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:58:47.461
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 11:58:48.699
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --go, --accept-bad-sysid, /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 11:58:48.703
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:58:56.661
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 11:58:57.797
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 11:58:58.003
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 11:58:59.239
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --go, --accept-bad-sysid, /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 11:58:59.241
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 12:03:34.858
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 12:03:35.997
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 12:03:36.201
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 12:03:37.442
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --go, --accept-bad-sysid, /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 12:03:37.444
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 12:04:32.120
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 12:04:33.259
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 12:04:33.463
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 12:04:34.700
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --go, --accept-bad-sysid, /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 12:04:34.702
+!MESSAGE Downloading ELF Process failed
+!SESSION 2023-11-02 12:05:31.140 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2023-11-02 12:05:37.844
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 12:05:51.104
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 12:05:52.228
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 12:05:52.274
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 12:05:53.546
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --go, --accept-bad-sysid, /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 12:05:53.549
+!MESSAGE Downloading ELF Process failed
+!SESSION 2023-11-02 15:31:15.576 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2023-11-02 15:31:23.158
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+!SESSION 2023-11-02 15:35:30.299 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -data file:/acct/mmazeem/491/CSCE491/Lab3/lights/software/ -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization /usr/local/3rdparty/altera/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2023-11-02 15:35:35.253
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 15:40:38.721
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 15:40:39.834
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 15:40:39.881
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 15:40:41.130
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --go, --accept-bad-sysid, /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 15:40:41.133
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 15:51:30.223
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 15:51:31.334
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 15:51:31.370
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 15:51:32.617
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --go, --accept-bad-sysid, /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 15:51:32.619
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 16:32:08.942
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 16:32:10.062
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 16:32:10.097
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 16:32:11.351
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --go, --accept-bad-sysid, /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 16:32:11.354
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 16:35:35.082
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 16:35:36.209
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-02 16:35:36.245
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-7]' --device=1 --instance=0 --go --accept-bad-sysid /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 16:35:37.501
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [1-7]', --device=1, --instance=0, --go, --accept-bad-sysid, /acct/mmazeem/491/CSCE491/Lab3/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-11-02 16:35:37.503
+!MESSAGE Downloading ELF Process failed
