@@ -228,6 +228,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "GPIO[5]",
+					"strict" : false
+				},
+				{
 					"name" : "CLOCK_50",
 					"strict" : false
 				},
@@ -236,7 +240,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "KEY[1]",
+					"name" : "KEY[3]",
 					"strict" : false
 				},
 				{
@@ -244,7 +248,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "KEY[3]",
+					"name" : "KEY[1]",
 					"strict" : false
 				},
 				{
