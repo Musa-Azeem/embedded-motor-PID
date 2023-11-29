@@ -28,9 +28,12 @@ int main()
 
   while(1) {
 
-	  int speed = 1;
-	  printf("%08x\n", speed);
+	  int speed = 2048;
+//	  printf("%08x\n", speed);
 	  IOWR(MOTOR_0_BASE, 0, speed);
+	  int actual_speed = IORD(MOTOR_0_BASE, 0);
+	  printf("Speed: %016x\n", actual_speed);
+	  usleep(1000000);
   }
   return 0;
 }

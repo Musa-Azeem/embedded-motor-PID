@@ -27,7 +27,10 @@ int main()
   printf("Hello from Nios II!\n");
 
   while(1) {
-	  IOWR(MOTOR_0_BASE, 0, 10);
+
+	  int speed = 1;
+	  printf("%08x\n", speed);
+	  IOWR(MOTOR_0_BASE, 0, speed);
   }
   return 0;
 }
