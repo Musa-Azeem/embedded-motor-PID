@@ -27,15 +27,13 @@
 
 float RPMs = 30;	// Target RPMs
 
-float kp = 1;
+float kp = 2;
 float kd = 0;
-float ki = 0;
+float ki = 1;
 
 clock_t prevT = 0;			// Previous t
 float eprev = 0;			// Previous error
 float eIntegral = 0;		// Running Integral of error
-
-int test = 0;
 
 int main()
 	// Calculate target function coefficient from desired RPMs
@@ -50,11 +48,10 @@ int main()
 	  prevT = currT; // Set previous time to current time
 
 	  // Get target as a function of time in ms
-	  int target = targetCoeff * currT;
+	  float target = targetCoeff * currT;
 
 	  // Read position from motor component
-	  int pos = test;
-	//   int pos = IORD(MOTOR_0_BASE, 0);
+	  int pos = IORD(MOTOR_0_BASE, 0);
 
 	  // Calculate error
 	  float e = (float)target - pos;
@@ -80,10 +77,9 @@ int main()
 		pwm = u > 0 ? 2047 : -2047;
 	  }
 
-	//   IOWR(MOTOR_0_BASE, 0, pwm);
-
-	  printf("Target %f, Pos: %d, Error: %d, u: %d, PWM: %d, DeltaT %f\n", target, pos, e, u, pwm, deltaT);
-	  test += 1*pwm;
+	  IOWR(MOTOR_0_BASE, 0, pwm);
+		printf("%d\n", currT);
+	  printf("Target %f, Pos: %d, Error: %f, u: %f, PWM: %d, DeltaT %f\n", target, pos, e, u, pwm, deltaT);
   }
   return 0;
 }
