@@ -236,6 +236,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "GPIO[11]",
+					"strict" : false
+				},
+				{
 					"name" : "CLOCK_50",
 					"strict" : false
 				},

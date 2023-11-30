@@ -22,18 +22,34 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+float kp = 1;
+float kd = 0;
+float ki = 0;
+
+clock_t currT = 0;			// Current t
+clock_t prevT = 0;			// Previous t
+int pos = 0;			// Position of motor
+float eprev = 0;		//
+float eIntegral = 0;
+
 int main()
 {
   printf("Hello from Nios II!\n");
 
   while(1) {
+	  int currT = clock();
 
-	  int speed = 2048;
-//	  printf("%08x\n", speed);
-	  IOWR(MOTOR_0_BASE, 0, speed);
-	  int actual_speed = IORD(MOTOR_0_BASE, 0);
-	  printf("Speed: %016x\n", actual_speed);
-	  usleep(1000000);
+	  float deltaT = currT - prevT;
+
+	  int target = 10000;
+
+
+	  int pwm = -2047;  // must be between 1200 and 2047. must be 1350 to start without help
+	  IOWR(MOTOR_0_BASE, 0, pwm);
+	  int position = IORD(MOTOR_0_BASE, 0);
+	  printf("Position: %d\n", position);
+//	  usleep(1000000);
   }
   return 0;
 }

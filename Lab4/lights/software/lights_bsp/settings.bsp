@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Nov 28, 2023 9:07:22 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1701223642154</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Nov 30, 2023 1:00:41 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1701367241587</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/acct/mmazeem/491/CSCE491/Lab4/lights/software/lights_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../nios_system.sopcinfo</SopcDesignFile>
