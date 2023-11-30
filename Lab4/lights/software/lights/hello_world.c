@@ -73,16 +73,16 @@ int main()
 	  // must be between 1150 and 2047. must be 1350 to start without help
 	  // (1150 acts as 0, since 1200 is required for motor to run)
 	  int pwm = u;
-	  if (abs(u) < 1150) {
+	  if (fabs(u) < 1150) {
 		pwm = u > 0 ? 1150 : -1150;
 	  } 
-	  else if (abs(u) > 2047) {
+	  else if (fabs(u) > 2047) {
 		pwm = u > 0 ? 2047 : -2047;
 	  }
 
 	//   IOWR(MOTOR_0_BASE, 0, pwm);
 
-	  printf("Target %d, Pos: %d, Error: %d, u: %d, PWM: %d, DeltaT %f\n", target, pos, e, u, pwm, deltaT);
+	  printf("Target %f, Pos: %d, Error: %d, u: %d, PWM: %d, DeltaT %f\n", target, pos, e, u, pwm, deltaT);
 	  test += 1*pwm;
   }
   return 0;
