@@ -82,7 +82,7 @@ int main()
 
 	//   IOWR(MOTOR_0_BASE, 0, pwm);
 
-	  printf("Target %d, Pos: %d, Error: %d, u: %d, PWM: %d, DeltaT %f\n", pos, e, u, pwm, deltaT);
+	  printf("Target %d, Pos: %d, Error: %d, u: %d, PWM: %d, DeltaT %f\n", target, pos, e, u, pwm, deltaT);
 	  test += 1*pwm;
   }
   return 0;
