@@ -15,41 +15,75 @@
  */
 
 #include <stdio.h>
-#include <system.h>
-#include <io.h>
+// #include <system.h>
+// #include <io.h>
 #include <math.h>
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
 
+#define PPR 7
+#define GR 50
+
+float RPMs = 30;	// Target RPMs
 
 float kp = 1;
 float kd = 0;
 float ki = 0;
 
-clock_t currT = 0;			// Current t
 clock_t prevT = 0;			// Previous t
-int pos = 0;			// Position of motor
-float eprev = 0;		//
-float eIntegral = 0;
+float eprev = 0;			// Previous error
+float eIntegral = 0;		// Running Integral of error
+
+int test = 0;
 
 int main()
+	// Calculate target function coefficient from desired RPMs
 {
+  float targetCoeff = RPMs * GR / PPR / 60e3;
+
   printf("Hello from Nios II!\n");
 
   while(1) {
-	  int currT = clock();
+	  clock_t currT = clock(); // get time in microseconds
+	  float deltaT = (float)(currT - prevT) / 1.0e6; // Get delta t in seconds
+	  prevT = currT; // Set previous time to current time
 
-	  float deltaT = currT - prevT;
+	  // Get target as a function of time in ms
+	  int target = targetCoeff * currT;
 
-	  int target = 10000;
+	  // Read position from motor component
+	  int pos = test;
+	//   int pos = IORD(MOTOR_0_BASE, 0);
 
+	  // Calculate error
+	  float e = (float)target - pos;
 
-	  int pwm = -2047;  // must be between 1200 and 2047. must be 1350 to start without help
-	  IOWR(MOTOR_0_BASE, 0, pwm);
-	  int position = IORD(MOTOR_0_BASE, 0);
-	  printf("Position: %d\n", position);
-//	  usleep(1000000);
+	  // Calculate Derivate and Integral terms
+	  float dedt = (float)(e - eprev) / deltaT;
+	  eIntegral += e * deltaT;
+
+	  // Calculate control signal
+	  float u = kp * e + kd * dedt + ki * eIntegral;
+
+	  // save previous error
+	  eprev = e;
+
+	  // Map magnitude of control signal to be between 1150 and 2047
+	  // must be between 1150 and 2047. must be 1350 to start without help
+	  // (1150 acts as 0, since 1200 is required for motor to run)
+	  int pwm = u;
+	  if (abs(u) < 1150) {
+		pwm = u > 0 ? 1150 : -1150;
+	  } 
+	  else if (abs(u) > 2047) {
+		pwm = u > 0 ? 2047 : -2047;
+	  }
+
+	//   IOWR(MOTOR_0_BASE, 0, pwm);
+
+	  printf("Target %d, Pos: %d, Error: %d, u: %d, PWM: %d, DeltaT %f\n", pos, e, u, pwm, deltaT);
+	  test += 1*pwm;
   }
   return 0;
 }
