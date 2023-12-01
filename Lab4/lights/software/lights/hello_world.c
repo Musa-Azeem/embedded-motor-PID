@@ -27,11 +27,15 @@
 #define PPR 7
 #define GR 50
 
-float RPMs = 0.05;	// Target RPMs
+#define MIN_PWM 1150
+#define MAX_PWM 2047
+#define DELAY_MS 250
 
-float kp = 2;
-float kd = 0;
-float ki = 0;
+float RPMs = -0.01;	// Target RPMs
+
+float kp = 1;
+float kd = 1;
+float ki = 1;
 
 //clock_t prevT = 0;			// Previous t
 float eprev = 0;			// Previous error
@@ -41,17 +45,15 @@ float target = 0;
 int main()
 {
   // Calculate target function coefficient from desired RPMs
-  float targetIncr = RPMs * GR * PPR * 60e-3;	// increase in target each cycle to maintain RPM
-  printf("%f", targetIncr);
+  float targetIncr = RPMs * GR * PPR * 60e-3 * DELAY_MS;	// increase in target pos each cycle to maintain RPM
 
   printf("Hello from Nios II!\n");
 
   while(1) {
-	  float deltaT = 250e-3;	// 250 ms
+	  float deltaT = DELAY_MS*1e-3;	// ms to s
 
-	  // Get target as a function of time in ms
+	  // Increment target pos by neessary amount each cycle
 	  target += targetIncr;
-//	  float target = 10000;
 
 	  // Read position from motor component
 	  int pos = IORD(MOTOR_0_BASE, 0);
@@ -63,8 +65,8 @@ int main()
 	  float dedt = (float)(e - eprev) / deltaT;
 	  eIntegral += e * deltaT;
 
-	  // Calculate control signal
-	  float u = kp * e + kd * dedt + ki * eIntegral;
+	  // Calculate control signal - offset so that 0 is MIN_PWM
+	  float u = kp * e + kd * dedt + ki * eIntegral + MIN_PWM;
 
 	  // save previous error
 	  eprev = e;
@@ -73,17 +75,16 @@ int main()
 	  // must be between 1150 and 2047. must be 1350 to start without help
 	  // (1150 acts as 0, since 1200 is required for motor to run)
 	  int pwm = u;
-	  if (fabs(u) < 1150) {
-		pwm = u > 0 ? 1150 : -1150;
+	  if (fabs(u) < MIN_PWM) {
+		pwm = u > 0 ? MIN_PWM : -MIN_PWM;
 	  } 
-	  else if (fabs(u) > 2047) {
-		pwm = u > 0 ? 2047 : -2047;
+	  else if (fabs(u) > MAX_PWM) {
+		pwm = u > 0 ? MAX_PWM : -MAX_PWM;
 	  }
-	  pwm += 1150;
 
 	  IOWR(MOTOR_0_BASE, 0, pwm);
 	  printf("Target %f, Pos: %d, Error: %f, u: %f, PWM: %d, DeltaT %f\n", target, pos, e, u, pwm, deltaT);
-	  usleep(250000);
+	  usleep(DELAY_MS*1e3);	// ms to us
   }
   return 0;
 }

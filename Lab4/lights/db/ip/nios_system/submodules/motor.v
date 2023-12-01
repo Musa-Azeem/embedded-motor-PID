@@ -127,12 +127,9 @@ module motor (
 	
 	// ======================= CALCULATE ACTUAL MOTOR SPEED ====================
 	// write actual motor speed to software
-//	reg [FP_LEN-1:0] motor_speed_in;
-//	assign avalon_slave_readdata = motor_speed_in;
-//	assign avalon_slave_readdata = motor_position_in;
 	assign avalon_slave_readdata = motor_position_in;
 
-	reg [32-1:0] motor_position_in;
+	reg [31:0] motor_position_in;
 	
 //	always @(*) motor_speed_in = motor_position_in;
 	
@@ -145,62 +142,28 @@ module motor (
 		end
 		else if (c2) begin
 			// If c2 is high on rising edge of c1, motor is going cc. increment position
-			motor_position_in <= motor_position_in + 1;
+			motor_position_in <= motor_position_in + 1'b1;
+		end
+		else if (c1) begin
+			// if c2 is low on rising edge of c1, motor is going clockwise. decrement position
+			motor_position_in <= motor_position_in - 1'b1;
 		end
 		else begin
-			// if c2 is low on rising edge of c1, motor is going clockwise. decrement position
-			motor_position_in <= motor_position_in - 1;
+			motor_position_in <= motor_position_in;
 		end
 	end
-
 	
-//	reg [FP_INT_LEN-1:0] encoder_period_counter;			// # of cycles should never be an int wider than FP_INT_LEN
-//	reg encoder_period_counter_rst;
-//	reg [FP_LEN*2-1:0] period_cyc;
-	
-	// Get period in seconds in fixed-point from period in cycless
-//   wire [FP_LEN-1:0] fp_period = ((period_cyc << FP_DEC_LEN) * FP_CLK_PERIOD_US) >> FP_DEC_LEN;
-	
-	// Get time per revolution in minutes (inverse of RPM)
-	// minutes per revolution = encoder period (us) * gear ratio * pulses per rotation * 1/60 (min/s) * 10e-6 (s/us)
-//	wire mpr = fp_period * FP_GEAR_RATIO * FP_PPR * FP_MIN_PER_S * FP_TEN_E_NEGSIX;
-
-//	reg clockwise_in;
-	
-//	// On rising edge of c1, re-calculate the period and find direction
 //	always @(posedge c1) begin
-//		
-//		encoder_period_counter <= encoder_period_counter + 1;
-//		// Calculate period
-////		period_cyc <= encoder_period_counter;	// Use current counter value to count cycles
-////		encoder_period_counter_rst <= 0;			// reset counter
-////		
-//////		period_cyc <= encoder_period_counter - last_encoder_period_counter;
-//////		last_encoder_period_counter <= encoder_period_counter;
-//		
-//		// Find direction
-//		if (c2) begin
-//			// If c2 is high on rising edge of c1, motor is going cc
-//			clockwise_in <= 0;
+//		if (rst_reset) begin
+//			motor_position_in <= 0;
 //		end
-//		else begin
-//			// if c2 is low on rising edge of c1, motor is going clockwise
-//			clockwise_in <= 1;
+//		// Detect rising edges of encoder
+//		if (c2 & !c2_prev) begin
+//			if (c1) begin
+//				// if c1 is already high on rising edge of c2, motor is going clockwise
+//			end
 //		end
+//	
 //	end
-
-//	// Every clock cycle, increment or reset counter
-//	always @(posedge clk_clk) begin
-////		if (encoder_period_counter_rst) begin
-////			// Reset counter
-////			encoder_period_counter <= 0;
-////		end
-////		else begin
-////			// Increment counter
-////			encoder_period_counter <= encoder_period_counter + 1;
-////		end
-//	end
-	
-	
-	
+//	
 endmodule

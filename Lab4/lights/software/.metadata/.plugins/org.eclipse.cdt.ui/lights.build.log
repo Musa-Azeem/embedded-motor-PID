@@ -1,4 +1,4 @@
-21:56:29 **** Incremental Build of configuration Nios II for project lights ****
+11:39:34 **** Incremental Build of configuration Nios II for project lights ****
 make all 
 Info: Building ../lights_bsp/
 make --no-print-directory -C ../lights_bsp/
@@ -15,5 +15,5 @@ Info: Creating lights.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source lights.elf >lights.objdump
 [lights build complete]
 
-21:56:30 Build Finished (took 776ms)
+11:39:35 Build Finished (took 773ms)
 
