@@ -1,4 +1,4 @@
-13:02:14 **** Incremental Build of configuration Nios II for project lights ****
+21:56:29 **** Incremental Build of configuration Nios II for project lights ****
 make all 
 Info: Building ../lights_bsp/
 make --no-print-directory -C ../lights_bsp/
@@ -9,8 +9,8 @@ Info: Linking lights.elf
 nios2-elf-g++ -T'../lights_bsp//linker.x' -msys-crt0='../lights_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../lights_bsp/   -Wl,-Map=lights.map   -O0 -g -Wall  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o lights.elf obj/default/hello_world.o -lm -msys-lib=m
 nios2-elf-insert lights.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name nios_system --quartus_project_dir "/acct/mmazeem/491/CSCE491/Lab4/lights" --jdi ../..//output_files/lights.jdi --sopcinfo /acct/mmazeem/491/CSCE491/Lab4/lights/software/lights_bsp/../../nios_system.sopcinfo
 Picked up _JAVA_OPTIONS: -Duser.home=/acct/mmazeem
-Info: (lights.elf) 68 KBytes program size (code + initialized data).
-Info:              130996 KBytes free for stack + heap.
+Info: (lights.elf) 75 KBytes program size (code + initialized data).
+Info:              130989 KBytes free for stack + heap.
 Info: Creating lights.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source lights.elf >lights.objdump
 [lights build complete]

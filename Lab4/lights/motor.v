@@ -140,7 +140,10 @@ module motor (
 	wire c2 = encoded_in[0];
 	
 	always @(posedge c1) begin
-		if (c2) begin
+		if (rst_reset) begin
+			motor_position_in <= 0;
+		end
+		else if (c2) begin
 			// If c2 is high on rising edge of c1, motor is going cc. increment position
 			motor_position_in <= motor_position_in + 1;
 		end

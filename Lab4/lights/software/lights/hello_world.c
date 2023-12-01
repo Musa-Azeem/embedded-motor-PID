@@ -15,40 +15,43 @@
  */
 
 #include <stdio.h>
-// #include <system.h>
-// #include <io.h>
+#include <system.h>
+#include <io.h>
 #include <math.h>
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/time.h>
+#include <unistd.h>
 
 #define PPR 7
 #define GR 50
 
-float RPMs = 30;	// Target RPMs
+float RPMs = 0.05;	// Target RPMs
 
 float kp = 2;
 float kd = 0;
-float ki = 1;
+float ki = 0;
 
-clock_t prevT = 0;			// Previous t
+//clock_t prevT = 0;			// Previous t
 float eprev = 0;			// Previous error
 float eIntegral = 0;		// Running Integral of error
+float target = 0;
 
 int main()
-	// Calculate target function coefficient from desired RPMs
 {
-  float targetCoeff = RPMs * GR / PPR / 60e3;
+  // Calculate target function coefficient from desired RPMs
+  float targetIncr = RPMs * GR * PPR * 60e-3;	// increase in target each cycle to maintain RPM
+  printf("%f", targetIncr);
 
   printf("Hello from Nios II!\n");
 
   while(1) {
-	  clock_t currT = clock(); // get time in microseconds
-	  float deltaT = (float)(currT - prevT) / 1.0e6; // Get delta t in seconds
-	  prevT = currT; // Set previous time to current time
+	  float deltaT = 250e-3;	// 250 ms
 
 	  // Get target as a function of time in ms
-	  float target = targetCoeff * currT;
+	  target += targetIncr;
+//	  float target = 10000;
 
 	  // Read position from motor component
 	  int pos = IORD(MOTOR_0_BASE, 0);
@@ -76,10 +79,11 @@ int main()
 	  else if (fabs(u) > 2047) {
 		pwm = u > 0 ? 2047 : -2047;
 	  }
+	  pwm += 1150;
 
 	  IOWR(MOTOR_0_BASE, 0, pwm);
-		printf("%d\n", currT);
 	  printf("Target %f, Pos: %d, Error: %f, u: %f, PWM: %d, DeltaT %f\n", target, pos, e, u, pwm, deltaT);
+	  usleep(250000);
   }
   return 0;
 }
