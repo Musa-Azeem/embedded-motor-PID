@@ -89,14 +89,7 @@ module motor (
 			end
 		end
 	end
-	
-	// ======================= CALCULATE DUTY CYCLE ============================
-	// Using magnitude of speed read from software, calculate the required duty
-	// cycle to achieve that speed
-	
-	// For now, use the magnitude of the given value as the duty cycle
 
-	
 	
 	// =========================== WRITE TO MOTOR ==============================
 	// Write m1 or m2 to 0 or 1, depending on direction and pwm_out
@@ -125,45 +118,32 @@ module motor (
 	end
 	
 	
-	// ======================= CALCULATE ACTUAL MOTOR SPEED ====================
-	// write actual motor speed to software
+	// ========================= TRACK MOTOR POSITION ==========================
+	// Track motor position using rising edges of encoder
 	assign avalon_slave_readdata = motor_position_in;
 
 	reg [31:0] motor_position_in;
-	
-//	always @(*) motor_speed_in = motor_position_in;
-	
+		
 	wire c1 = encoded_in[1];
 	wire c2 = encoded_in[0];
+
+	reg c1_prev;
 	
-	always @(posedge c1) begin
+	always @(posedge clk_clk) begin
+		// Reset counter
 		if (rst_reset) begin
 			motor_position_in <= 0;
 		end
-		else if (c2) begin
-			// If c2 is high on rising edge of c1, motor is going cc. increment position
-			motor_position_in <= motor_position_in + 1'b1;
-		end
-		else if (c1) begin
-			// if c2 is low on rising edge of c1, motor is going clockwise. decrement position
-			motor_position_in <= motor_position_in - 1'b1;
+		
+		// Check if rising edge of c1
+		else if (c1 && !c1_prev) begin
+			// If c2 is already high, increment pos (clockwise). if not, decrement pos (cc)
+			motor_position_in <= c2 ? motor_position_in + 1'b1 : motor_position_in - 1'b1;
 		end
 		else begin
 			motor_position_in <= motor_position_in;
 		end
+		
+		c1_prev <= c1;
 	end
-	
-//	always @(posedge c1) begin
-//		if (rst_reset) begin
-//			motor_position_in <= 0;
-//		end
-//		// Detect rising edges of encoder
-//		if (c2 & !c2_prev) begin
-//			if (c1) begin
-//				// if c1 is already high on rising edge of c2, motor is going clockwise
-//			end
-//		end
-//	
-//	end
-//	
 endmodule

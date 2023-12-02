@@ -27,25 +27,27 @@
 #define PPR 7
 #define GR 50
 
-#define MIN_PWM 1150
+#define MIN_PWM 1290
 #define MAX_PWM 2047
-#define DELAY_MS 250
+#define DELAY_MS 10
 
-float RPMs = -0.01;	// Target RPMs
+float RPMs = 60;	// Target RPMs
 
-float kp = 1;
-float kd = 1;
-float ki = 1;
+float kp = 30;
+float kd = 30;
+float ki = 5;
 
 //clock_t prevT = 0;			// Previous t
 float eprev = 0;			// Previous error
 float eIntegral = 0;		// Running Integral of error
 float target = 0;
 
+int map_pwm(float x);
+
 int main()
 {
   // Calculate target function coefficient from desired RPMs
-  float targetIncr = RPMs * GR * PPR * 60e-3 * DELAY_MS;	// increase in target pos each cycle to maintain RPM
+  float targetIncr = RPMs * GR * PPR * DELAY_MS / 60e3;	// increase in target pos each cycle to maintain RPM
 
   printf("Hello from Nios II!\n");
 
@@ -66,25 +68,28 @@ int main()
 	  eIntegral += e * deltaT;
 
 	  // Calculate control signal - offset so that 0 is MIN_PWM
-	  float u = kp * e + kd * dedt + ki * eIntegral + MIN_PWM;
+	  float u = kp * e + kd * dedt + ki * eIntegral;
 
 	  // save previous error
 	  eprev = e;
 
-	  // Map magnitude of control signal to be between 1150 and 2047
-	  // must be between 1150 and 2047. must be 1350 to start without help
-	  // (1150 acts as 0, since 1200 is required for motor to run)
-	  int pwm = u;
-	  if (fabs(u) < MIN_PWM) {
-		pwm = u > 0 ? MIN_PWM : -MIN_PWM;
-	  } 
-	  else if (fabs(u) > MAX_PWM) {
-		pwm = u > 0 ? MAX_PWM : -MAX_PWM;
-	  }
+	  // Map magnitude of control signal to be between 1130 and 2047
+	  // must be between 1130 and 2047. must be 1350 to start without help
+	  // (1130 acts as 0, since 1135 is required for motor to run)
+	  int sign = u > 0 ? 1 : -1;
+	  int pwm = sign * map_pwm(fabs(u));
 
 	  IOWR(MOTOR_0_BASE, 0, pwm);
-	  printf("Target %f, Pos: %d, Error: %f, u: %f, PWM: %d, DeltaT %f\n", target, pos, e, u, pwm, deltaT);
+	  printf("Target %f, Pos: %d, Error: %f, u: %f, PWM: %d\n", target, pos, e, u, pwm);
 	  usleep(DELAY_MS*1e3);	// ms to us
   }
   return 0;
+}
+
+int map_pwm(float x) {
+	// linear interpolate values to be between 1150 and 2047
+	if (x > MAX_PWM) {
+		return MAX_PWM;
+	}
+	return (int)((x*(MAX_PWM-MIN_PWM))/MAX_PWM + MIN_PWM);
 }
