@@ -27,32 +27,37 @@
 #define PPR 7
 #define GR 50
 
-#define MIN_PWM 1290
+#define MIN_PWM 1150
 #define MAX_PWM 2047
-#define DELAY_MS 10
 
-float RPMs = 60;	// Target RPMs
+// Parameters
+float total_time = 60; 		// Time in seconds for motor to run
+float T_S = 0.1;			// Controller time step (and logging rate)
+float RPMs = -30;			// Target RPMs
+float kp = 35;
+float kd = 1.65;
+float ki = 0;
 
-float kp = 30;
-float kd = 30;
-float ki = 5;
-
-//clock_t prevT = 0;			// Previous t
 float eprev = 0;			// Previous error
 float eIntegral = 0;		// Running Integral of error
 float target = 0;
+
+int prev_pos = 0;
+int current_time_ms = 0;
 
 int map_pwm(float x);
 
 int main()
 {
   // Calculate target function coefficient from desired RPMs
-  float targetIncr = RPMs * GR * PPR * DELAY_MS / 60e3;	// increase in target pos each cycle to maintain RPM
+  float total_time_ms = (float)total_time * 1e3;
+  float delay_ms = T_S * 1e3;
+  float targetIncr = RPMs * GR * PPR * delay_ms / 60e3;	// increase in target pos each cycle to maintain RPM
 
   printf("Hello from Nios II!\n");
 
   while(1) {
-	  float deltaT = DELAY_MS*1e-3;	// ms to s
+	  float deltaT = delay_ms*1e-3;	// ms to s
 
 	  // Increment target pos by neessary amount each cycle
 	  target += targetIncr;
@@ -76,18 +81,39 @@ int main()
 	  // Map magnitude of control signal to be between 1130 and 2047
 	  // must be between 1130 and 2047. must be 1350 to start without help
 	  // (1130 acts as 0, since 1135 is required for motor to run)
+
 	  int sign = u > 0 ? 1 : -1;
+
+	  if (u < 0 && RPMs > 0) {
+		  u = 0;
+		  sign = 1;
+	  }
+	  else if (u > 0 && RPMs < 0) {
+		  u = 0;
+		  sign = -1;
+	  }
+
 	  int pwm = sign * map_pwm(fabs(u));
 
 	  IOWR(MOTOR_0_BASE, 0, pwm);
 	  printf("Target %f, Pos: %d, Error: %f, u: %f, PWM: %d\n", target, pos, e, u, pwm);
-	  usleep(DELAY_MS*1e3);	// ms to us
+	  float real_speed_rpms = (float)(pos - prev_pos) / PPR / GR / delay_ms * 60e3;
+//	  printf("Time: %d (ms), Speed: %f RPMs, Motor Input: %f\n", current_time_ms, real_speed_rpms, (float)pwm / MAX_PWM);
+	  prev_pos = pos;
+	  current_time_ms += delay_ms;
+	  usleep(delay_ms*1e3);	// ms to us
+
+	  if (current_time_ms >= total_time_ms) {
+		  IOWR(MOTOR_0_BASE, 0, 0);
+		  break;
+	  }
   }
   return 0;
 }
 
 int map_pwm(float x) {
 	// linear interpolate values to be between 1150 and 2047
+
 	if (x > MAX_PWM) {
 		return MAX_PWM;
 	}
